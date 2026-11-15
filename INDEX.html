@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЛАБА19</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Расписание занятий группы ПКС-1-24</h1>
+    <p id="weekInfo"></p>
+  </header>
+
+  <main>
+    <div id="controls">
+      <button type="button" id="addBtn">Добавить занятие</button>
+      <select id="teacherFilter" aria-label="Преподаватель"></select>
+      <select id="typeFilter" aria-label="Тип занятия"></select>
+      <select id="weekFilter" aria-label="Неделя">
+        <option value="current">Текущая</option>
+        <option value="white">Белая</option>
+        <option value="black">Чёрная</option>
+        <option value="all">Все</option>
+      </select>
+      <button type="button" id="exportBtn" class="secondary">Экспорт</button>
+      <button type="button" id="importBtn" class="secondary">Импорт</button>
+      <input type="file" id="importInput" accept=".json" hidden>
+      <button type="button" id="printBtn" class="secondary">Печать</button>
+    </div>
+
+    <table id="schedule"></table>
+    <div id="scheduleList"></div>
+  </main>
+
+  <dialog id="lessonDialog">
+    <form id="lessonForm" novalidate>
+      <h2 id="dialogTitle">Новое занятие</h2>
+      <input type="hidden" id="lessonId">
+
+      <label>День
+        <select id="lessonDay"></select>
+      </label>
+      <label>Пара
+        <select id="lessonPair"></select>
+      </label>
+      <label>Предмет
+        <input type="text" id="lessonSubject" maxlength="60">
+      </label>
+      <label>Преподаватель
+        <input type="text" id="lessonTeacher" list="teachersList">
+        <datalist id="teachersList"></datalist>
+      </label>
+      <label>Аудитория
+        <input type="text" id="lessonRoom" maxlength="15">
+      </label>
+      <label>Тип занятия
+        <select id="lessonType"></select>
+      </label>
+      <label>Неделя
+        <select id="lessonWeek"></select>
+      </label>
+
+      <div id="lessonErrors" role="alert"></div>
+
+      <div class="dialog-buttons">
+        <button type="submit" id="saveBtn">Сохранить</button>
+        <button type="button" id="deleteBtn" class="danger">Удалить</button>
+        <button type="button" id="cancelBtn" class="secondary">Отмена</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer>
+    <p>Ниязова Фатима ПКС-1-24</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/model.js"></script>
+  <script type="module" src="js/storage.js"></script>
+<script type="module" src="js/ui.js"></script>
+<script type="module" src="js/validation.js"></script>
+<script type="module" src="js/dates.js"></script>
+</body>
+</html>
